@@ -1,6 +1,6 @@
 
 #### Author: Aysad Kozanoglu
-#ä## Email: aysadx@gmail.com
+##### Email: aysadx@gmail.com
 
 one liner auto installer scripts for debian Jessie (jessie LTS until 2020) (and derivates like ubuntu)
 
