@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=2016 disable=1091 disable=2059
 
+# Aysad Kozanoglu
+# Quick one liner:
+# wget -O - https://git.io/fjWjZ | bash
+
 # Notes:
 #   2018-12-24 - Update to MaxScale Version 2.3
 
