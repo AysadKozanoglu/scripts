@@ -2,7 +2,7 @@
 #email: aysadx@gmail.com
 # Debian Jessie
 # QUICK LAUNCH script
-# wget -O - https://git.io/fpuhU | bash
+# wget -O - https://git.io/fjWjB | bash
 #
 apt-get -y -qq install software-properties-common
 
