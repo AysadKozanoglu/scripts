@@ -7,7 +7,7 @@ my one-liner auto installer scripts for debian Jessie (jessie LTS until 2020) (a
 ##### MariaDB singler Server installation
 [source](https://gist.github.com/AysadKozanoglu/d485de4d7b6492cb0c478c098b4c63c6#file-mariadb_debian_jessie_install-sh)
 ```
-wget -O - https://git.io/fpuj6 | bash
+wget -O - https://git.io/fjWjB | bash
 ```
 
 ##### nginx threads,iao, stream, ssl compile installation
