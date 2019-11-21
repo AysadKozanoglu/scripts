@@ -9,7 +9,7 @@
 # check before running this script if nginx is running or apache is installed
 # if yes then remove/disable them
 
-   NGINXVER=nginx-1.14.1
+   NGINXVER=nginx-1.16.1
      OSSLVER=openssl-0.9.8zf
   SOURCEPATH=/source
   
