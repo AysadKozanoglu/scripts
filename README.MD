@@ -2,7 +2,7 @@
 #### Author: Aysad Kozanoglu
 ##### Email: aysadx@gmail.com
 
-my one-liner auto installer scripts for debian Jessie (jessie LTS until 2020) (and derivates like ubuntu)
+my one-liner auto installer scripts for debian Jessie (jessie LTS until 2020) stretch  (and derivates like ubuntu)
 
 ##### MariaDB singler Server installation
 [source](https://github.com/AysadKozanoglu/scripts/blob/master/mariadb-install.sh)
