@@ -16,10 +16,10 @@ wget -O - https://git.io/fjWjB | bash
 wget -O - https://git.io/fpujF | bash
 ```
 
-##### php7.2 installation (execute two times)
-[source](https://gist.github.com/AysadKozanoglu/52aa3439f87703edaa2163795896b526#file-php7-install-debian_jessie)
+##### php7.2 installation
+[source](https://github.com/AysadKozanoglu/scripts/blob/master/php7.2-install.sh)
 ```
-wget -O - https://git.io/fhxNt | bash
+wget -O - https://git.io/JvLZx | bash
 ```
 ##### KVM CLoud with WEB Gui installation
 [source](https://github.com/AysadKozanoglu/webvirtmgr/wiki/Install-WebVirtMgr-KVM-Cloud---Easy-auto-installer)
