@@ -10,7 +10,7 @@
 # if yes then remove/disable them
 
    NGINXVER=nginx-1.16.1
-     OSSLVER=openssl-1.1.1c.tar.gz
+     OSSLVER=openssl-1.1.1c
   SOURCEPATH=/source
   
   if [ ! -d "$SOURCEPATH" ]; 
