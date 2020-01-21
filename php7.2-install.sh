@@ -5,7 +5,7 @@
 
 #
 # QUICK launch script
-# wget -O - https://git.io/fpuND | bash
+# wget -O - https://git.io/JvLZx | bash
 #
 
 # apt-get -y remove php5* --purge
