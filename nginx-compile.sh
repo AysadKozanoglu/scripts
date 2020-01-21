@@ -10,7 +10,7 @@
 # if yes then remove/disable them
 
    NGINXVER=nginx-1.16.1
-     OSSLVER=openssl-0.9.8zf
+     OSSLVER=openssl-1.1.1c.tar.gz
   SOURCEPATH=/source
   
   if [ ! -d "$SOURCEPATH" ]; 
@@ -26,7 +26,7 @@ cd $SOURCEPATH
 
 echo -e "downloading packages $NGINXVER and  $OSSLVER "
 
-wget -q http://nginx.org/download/${NGINXVER}.tar.gz; wget -q https://ftp.openssl.org/source/old/0.9.x/${OSSLVER}.tar.gz
+wget -q http://nginx.org/download/${NGINXVER}.tar.gz; wget -q https://www.openssl.org/source/old/1.1.1/${OSSLVER}.tar.gz
 
 echo -e "extracting packages $NGINXVER and  $OSSLVER "
 
@@ -37,12 +37,6 @@ make && make install
 
 wget -O /usr/local/nginx/conf/nginx.conf "https://git.io/fpuNz"
 
-echo -e " set sysconf tuning \n"
-
-wget -O /etc/sysctl.conf "https://raw.githubusercontent.com/AysadKozanoglu/mytools/master/conf/sysctl.conf"
-
-sysctl -p /etc/sysctl.conf
- 
 nginx
 
-echo -e "nginx php mysql installed\n"
+echo -e "nginx installed\n"
