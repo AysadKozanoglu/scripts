@@ -11,9 +11,9 @@ wget -O - https://git.io/fjWjB | bash
 ```
 
 ##### nginx threads,iao, stream, ssl compile installation
-[source](https://gist.github.com/AysadKozanoglu/8f95343bb5e4e97ab09461ef92dd3124#file-nginx_compile_install-sh)
+[source](https://github.com/AysadKozanoglu/scripts/blob/master/nginx-compile.sh)
 ```
-wget -O - https://git.io/fpujF | bash
+wget -O - https://git.io/JvLnJ| bash
 ```
 
 ##### php7.2 installation
