@@ -20,4 +20,4 @@ wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add -
 
 echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
 
-apt update &&  apt install -y --yes php7.3 $PHPPACKS
+apt update &&  apt install --no-install-recommends  -y --yes php7.3 $PHPPACKS
