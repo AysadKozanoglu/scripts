@@ -24,9 +24,11 @@ if [ $1 == "enc" ];
  then
         openssl aes-256-cbc -a -salt -in $2 -out ${2}.enc
         rm -i ${2}
+        exit 0
 fi
 
 if [ $1 == "dec" ];
  then
         openssl aes-256-cbc -d -a -in ${2}.enc -out $2
+        exit 0
 fi
