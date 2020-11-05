@@ -2,7 +2,7 @@
 #####################################################
 # Author: Aysad Kozanoglu
 #
-# OS: Debian / Ubuntu / all devivates of Debian 
+# OS: Debian / Ubuntu / all derivates of Debian 
 #
 # Usage: file_encrypter.sh enc|dec FILENAME
 #
