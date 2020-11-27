@@ -4,7 +4,7 @@
 #email: aysadx@gmail.com
 
 # QUICK LAUNCH script
-# wget -O - https://git.io/fpuAV | bash
+# wget -O - https://git.io/JvLnJ | bash
 #
 # check before running this script if nginx is running or apache is installed
 # if yes then remove/disable them
