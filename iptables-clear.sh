@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Author: Aysad Kozanoglu
+# clearing nf_tables (netfilter based rules)
 
 command -v iptables >/dev/null 2>&1 || { echo >&2 "iptables not found  Aborting."; exit 1; }
 
