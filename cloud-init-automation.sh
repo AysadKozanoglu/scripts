@@ -1,16 +1,25 @@
 #!/bin/bash
 
-# author: Aysad Koaznoglu
-
+#  author: Aysad Koaznoglu
+# version: v0.2
 # cloud-init KVM automation 
 
+# downloat all images for cloud-int for your needs to/var/lib/libvirt/images/templates/
+# links:
+#
+# ubuntu 22.0-server
+# wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+#
+# ubuntu 20.04-server
+# wget https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img
+#
+# debian buster 10
+# wget http://cloud.debian.org/images/cloud/buster/20220911-1135/debian-10-generic-amd64-20220911-1135.qcow2
 
-# need tool for cloud-init creation 
 apt install cloud-utils whois -y
 
-
-VMSTORAGEPATH=/mnt/lvmvg01storageraid1  # this is my path to my VM containers as storate path - change it
-
+VMSTORAGEPATH=/mnt/lvmvg01storageraid1
+ CLOUDIMGPATH=/var/lib/libvirt/images/templates
 
 # debug
 echo $1" "$2
@@ -18,33 +27,13 @@ echo $1" "$2
 
 CLOUD_INIT_IMG=$1
        VM_NAME=$2
-      USERNAME=suser  # change it
-      PASSWORD=suser  # change it
-           RAM=1024   # change it if to low 
-         VMSIZE=10G   # change it if to low
+      USERNAME=suser
+      PASSWORD=suser
 
-function checkparams {
-	if [[ ! $CLOUD_INIT_IMG ]]; then
-		echo " give a cloud bas image file name see /var/lib/libvirt/images/templates/"
-		tree /var/lib/libvirt/images/templates/
-		exit 1
-	fi
-	
-	
-	if [[ ! $VM_NAME ]]; then
-		echo "give new vm name"
-		exit 1
-	fi
-}
+mkdir $VMSTORAGEPATH/$VM_NAME > /dev/null 2>&1
 
-
-function build {
-
-	mkdir $VMSTORAGEPATH/$VM_NAME
-	qemu-img convert /var/lib/libvirt/images/templates/$CLOUD_INIT_IMG $VMSTORAGEPATH/$VM_NAME/root-disk.qcow2
-	qemu-img resize $VMSTORAGEPATH/$VM_NAME/root-disk.qcow2 $VMSIZE
-	
-	echo "#cloud-config
+## cloud init cfg param config
+echo "#cloud-config
 system_info:
   default_user:
     name: $USERNAME
@@ -59,24 +48,46 @@ hostname: $VM_NAME
 # configure sshd to allow users logging in using password 
 # rather than just keys
 ssh_pwauth: True
-" | sudo tee $VMSTORAGEPATH/$VM_NAME/cloud-init.cfg
+" | tee $VMSTORAGEPATH/$VM_NAME/cloud-init.cfg
+## End of cloud init cfg
 
-	cloud-localds $VMSTORAGEPATH/$VM_NAME/cloud-init.iso $VMSTORAGEPATH/$VM_NAME/cloud-init.cfg
+
+if [[ ! -f "$VMSTORAGEPATH/$VM_NAME/cloud-init.cfg" ]]; then
+    echo " dont exists."
+    exit 1
+fi
+
+function checkparams {
+	if [[ ! $CLOUD_INIT_IMG ]]; then
+		echo " give a cloud bas image file name see $CLOUDIMGPATH/"
+		tree $CLOUDIMGPATH/
+		exit 1
+	fi
 	
+	
+	if [[ ! $VM_NAME ]]; then
+		echo "give new vm name"
+		exit 1
+	fi
+}
+
+function build {
+
+	qemu-img convert $CLOUDIMGPATH/$CLOUD_INIT_IMG $VMSTORAGEPATH/$VM_NAME/root-disk.qcow2
+	qemu-img resize $VMSTORAGEPATH/$VM_NAME/root-disk.qcow2 10G
+	cloud-localds $VMSTORAGEPATH/$VM_NAME/cloud-init.iso $VMSTORAGEPATH/$VM_NAME/cloud-init.cfg
 	virt-install \
 	  --name $VM_NAME \
-	  --memory $RAM \
+	  --memory 1024 \
 	  --disk $VMSTORAGEPATH/$VM_NAME/root-disk.qcow2,device=disk,bus=virtio \
 	  --disk $VMSTORAGEPATH/$VM_NAME/cloud-init.iso,device=cdrom \
 	  --os-type linux \
 	  --os-variant ubuntu19.04 \
 	  --virt-type kvm \
 	  --graphics none \
-	  --network network=default \
+	  --network bridge=br1 \
 	  --import
 }
-
-cloud-localds $VMSTORAGEPATH//$VM_NAME/cloud-init.iso $VMSTORAGEPATH/$VM_NAME/cloud-init.cfg
 
 function main {
 	checkparams
