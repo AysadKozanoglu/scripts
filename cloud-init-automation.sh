@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#++++++  CHANGE line 44,46,48 with your own Public SSH KEY, otherwise you would be "hack",   :)  ++++#
+
 #  author: Aysad Koaznoglu
 # version: v0.2
 # cloud-init KVM automation 
