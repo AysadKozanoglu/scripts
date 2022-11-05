@@ -5,6 +5,9 @@
 # installation of docker
 # codeslines can also be used without cloud-init as script
 
+# Install 
+# wget -qO- "https://raw.githubusercontent.com/AysadKozanoglu/scripts/master/docker-install-buster.sh" | bash 
+
 
 export PATH=$PATH":/usr/local/sbin:/usr/sbin:/sbin"
 
